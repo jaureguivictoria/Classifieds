@@ -18,7 +18,7 @@ class CreateAdsTable extends Migration
             $table->increments('id');
             $table->string('title');
             $table->string('subtitle');
-            $table->string('description')->nullable();
+            $table->text('description')->nullable();
             $table->string('status')->default(Status::PENDING);
             $table->datetime('expired_at')->nullable();
             $table->timestamps();

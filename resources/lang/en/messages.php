@@ -1,6 +1,7 @@
 <?php
 
 return [
+    'app_name' => 'Classifieds',
     'navbar' => 'Navbar',
     'dropdown' => 'Dropdown',
     'action' => 'Action',
@@ -10,4 +11,5 @@ return [
     'search' => 'Search',
     'current' => 'current',
     'welcome' => 'Welcome',
+    'more_info' => 'More info',
 ];

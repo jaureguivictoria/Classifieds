@@ -5,23 +5,30 @@ import { Router, Route, Link } from 'react-router';
 class Master extends Component {
   render(){
     return (
-      <div className="container">
-        <nav className="navbar navbar-default">
-          <div className="container-fluid">
-            <div className="navbar-header">
-              <h1 className="">Classifieds</h1>
+        <div className="container">
+            <div className="row mt-4 mb-4">
+                <div className="col-sm-12">
+                    <nav className="navbar navbar-expand-lg navbar-light bg-light">
+                        <Link className="navbar-brand" to="/">Inicio</Link>
+                        <div className="collapse navbar-collapse">
+                            <ul className="navbar-nav  ml-auto">
+                                <li className="nav-item">
+                                    <Link className="nav-link" to="add-item">Crear anuncio</Link>
+                                </li>
+                                <li className="nav-item">
+                                    <Link className="nav-link" to="display-item">Anuncios</Link>
+                                </li>
+                            </ul>
+                        </div>
+                    </nav>
+                </div>
             </div>
-            <ul className="nav navbar-nav">
-              <li><Link to="/">Home</Link></li>
-              <li><Link to="add-item">Create Ad</Link></li>
-              <li><Link to="display-item">Ads</Link></li>
-            </ul>
-          </div>
-      </nav>
-          <div>
-              {this.props.children}
-          </div>
-      </div>
+            <div className="row">
+                <div className="col-sm-12">
+                    {this.props.children}
+                </div>
+            </div>
+        </div>
     )
   }
 }

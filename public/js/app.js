@@ -61057,78 +61057,77 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 
 
 var Master = function (_Component) {
-  _inherits(Master, _Component);
+    _inherits(Master, _Component);
 
-  function Master() {
-    _classCallCheck(this, Master);
+    function Master() {
+        _classCallCheck(this, Master);
 
-    return _possibleConstructorReturn(this, (Master.__proto__ || Object.getPrototypeOf(Master)).apply(this, arguments));
-  }
-
-  _createClass(Master, [{
-    key: 'render',
-    value: function render() {
-      return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-        'div',
-        { className: 'container' },
-        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-          'nav',
-          { className: 'navbar navbar-default' },
-          __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-            'div',
-            { className: 'container-fluid' },
-            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-              'div',
-              { className: 'navbar-header' },
-              __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-                'h1',
-                { className: '' },
-                'Classifieds'
-              )
-            ),
-            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-              'ul',
-              { className: 'nav navbar-nav' },
-              __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-                'li',
-                null,
-                __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-                  __WEBPACK_IMPORTED_MODULE_1_react_router__["a" /* Link */],
-                  { to: '/' },
-                  'Home'
-                )
-              ),
-              __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-                'li',
-                null,
-                __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-                  __WEBPACK_IMPORTED_MODULE_1_react_router__["a" /* Link */],
-                  { to: 'add-item' },
-                  'Create Ad'
-                )
-              ),
-              __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-                'li',
-                null,
-                __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-                  __WEBPACK_IMPORTED_MODULE_1_react_router__["a" /* Link */],
-                  { to: 'display-item' },
-                  'Ads'
-                )
-              )
-            )
-          )
-        ),
-        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-          'div',
-          null,
-          this.props.children
-        )
-      );
+        return _possibleConstructorReturn(this, (Master.__proto__ || Object.getPrototypeOf(Master)).apply(this, arguments));
     }
-  }]);
 
-  return Master;
+    _createClass(Master, [{
+        key: 'render',
+        value: function render() {
+            return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                'div',
+                { className: 'container' },
+                __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                    'div',
+                    { className: 'row mt-4 mb-4' },
+                    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                        'div',
+                        { className: 'col-sm-12' },
+                        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                            'nav',
+                            { className: 'navbar navbar-expand-lg navbar-light bg-light' },
+                            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                                __WEBPACK_IMPORTED_MODULE_1_react_router__["a" /* Link */],
+                                { className: 'navbar-brand', to: '/' },
+                                'Inicio'
+                            ),
+                            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                                'div',
+                                { className: 'collapse navbar-collapse' },
+                                __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                                    'ul',
+                                    { className: 'navbar-nav  ml-auto' },
+                                    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                                        'li',
+                                        { className: 'nav-item' },
+                                        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                                            __WEBPACK_IMPORTED_MODULE_1_react_router__["a" /* Link */],
+                                            { className: 'nav-link', to: 'add-item' },
+                                            'Crear anuncio'
+                                        )
+                                    ),
+                                    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                                        'li',
+                                        { className: 'nav-item' },
+                                        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                                            __WEBPACK_IMPORTED_MODULE_1_react_router__["a" /* Link */],
+                                            { className: 'nav-link', to: 'display-item' },
+                                            'Anuncios'
+                                        )
+                                    )
+                                )
+                            )
+                        )
+                    )
+                ),
+                __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                    'div',
+                    { className: 'row' },
+                    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                        'div',
+                        { className: 'col-sm-12' },
+                        this.props.children
+                    )
+                )
+            );
+        }
+    }]);
+
+    return Master;
 }(__WEBPACK_IMPORTED_MODULE_0_react__["Component"]);
 
 /* harmony default export */ __webpack_exports__["a"] = (Master);
@@ -61162,10 +61161,11 @@ var CreateAd = function (_Component) {
 
     var _this = _possibleConstructorReturn(this, (CreateAd.__proto__ || Object.getPrototypeOf(CreateAd)).call(this, props));
 
-    _this.state = { adTitle: '', adSubtitle: '' };
+    _this.state = { adTitle: '', adSubtitle: '', adDescription: '' };
 
     _this.handleChange1 = _this.handleChange1.bind(_this);
     _this.handleChange2 = _this.handleChange2.bind(_this);
+    _this.handleChange3 = _this.handleChange3.bind(_this);
     _this.handleSubmit = _this.handleSubmit.bind(_this);
 
     return _this;
@@ -61186,12 +61186,20 @@ var CreateAd = function (_Component) {
       });
     }
   }, {
+    key: 'handleChange3',
+    value: function handleChange3(e) {
+      this.setState({
+        adDescription: e.target.value
+      });
+    }
+  }, {
     key: 'handleSubmit',
     value: function handleSubmit(e) {
       e.preventDefault();
       var ads = {
         title: this.state.adTitle,
-        subtitle: this.state.adSubtitle
+        subtitle: this.state.adSubtitle,
+        description: this.state.adDescription
       };
       var uri = __WEBPACK_IMPORTED_MODULE_2__MyGlobleSetting__["a" /* default */].url + '/api/ads';
       axios.post(uri, ads).then(function (response) {
@@ -61205,57 +61213,66 @@ var CreateAd = function (_Component) {
         'div',
         null,
         __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-          'h1',
+          'h3',
           null,
-          'Create Ad'
+          'Crear anuncio'
         ),
         __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
           'form',
           { onSubmit: this.handleSubmit },
           __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
             'div',
-            { className: 'row' },
+            { className: 'form-group row' },
+            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+              'label',
+              { className: 'col-sm-2 col-form-label' },
+              'Titulo'
+            ),
             __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
               'div',
-              { className: 'col-md-6' },
-              __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-                'div',
-                { className: 'form-group' },
-                __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-                  'label',
-                  null,
-                  'Ad Title:'
-                ),
-                __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('input', { type: 'text', className: 'form-control', onChange: this.handleChange1 })
-              )
+              { className: 'col-sm-10' },
+              __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('input', { type: 'text', className: 'form-control', onChange: this.handleChange1 })
             )
           ),
           __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
             'div',
-            { className: 'row' },
+            { className: 'form-group row' },
+            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+              'label',
+              { className: 'col-sm-2 col-form-label' },
+              'Subtitulo'
+            ),
             __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
               'div',
-              { className: 'col-md-6' },
-              __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-                'div',
-                { className: 'form-group' },
-                __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-                  'label',
-                  null,
-                  'Ad Subtitle:'
-                ),
-                __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('textarea', { className: 'form-control col-md-6', onChange: this.handleChange2 })
-              )
+              { className: 'col-sm-10' },
+              __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('input', { type: 'text', className: 'form-control', onChange: this.handleChange2 })
             )
           ),
-          __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('br', null),
           __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
             'div',
-            { className: 'form-group' },
+            { className: 'form-group row' },
             __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-              'button',
-              { className: 'btn btn-primary' },
-              'Add Ad'
+              'label',
+              { className: 'col-sm-2 col-form-label' },
+              'Descripcion'
+            ),
+            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+              'div',
+              { className: 'col-sm-10' },
+              __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('textarea', { className: 'form-control', onChange: this.handleChange3 })
+            )
+          ),
+          __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+            'div',
+            { className: 'form-group row' },
+            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+              'div',
+              { className: 'col-sm-2 offset-sm-5' },
+              __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                'button',
+                { className: 'btn btn-primary' },
+                'Guardar'
+              )
             )
           )
         )
@@ -61322,7 +61339,7 @@ var DisplayAd = function (_Component) {
     value: function tabRow() {
       if (this.state.ads instanceof Array) {
         return this.state.ads.map(function (object, i) {
-          return;
+          return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_3__TableRow__["a" /* default */], { obj: object, key: i });
         });
       }
     }
@@ -61333,25 +61350,10 @@ var DisplayAd = function (_Component) {
         'div',
         null,
         __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-          'h1',
+          'h3',
           null,
-          'Ads'
+          'Anuncios'
         ),
-        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-          'div',
-          { className: 'row' },
-          __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('div', { className: 'col-md-10' }),
-          __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-            'div',
-            { className: 'col-md-2' },
-            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-              __WEBPACK_IMPORTED_MODULE_2_react_router__["a" /* Link */],
-              { to: '/add-item' },
-              'Create Ad'
-            )
-          )
-        ),
-        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('br', null),
         __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
           'table',
           { className: 'table table-hover' },
@@ -61369,17 +61371,17 @@ var DisplayAd = function (_Component) {
               __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
                 'td',
                 null,
-                'Ad Title'
+                'Titulo'
               ),
               __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
                 'td',
                 null,
-                'Ad Subtitle'
+                'Subtitulo'
               ),
               __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
                 'td',
                 { width: '200px' },
-                'Actions'
+                'Acciones'
               )
             )
           ),
@@ -61465,13 +61467,13 @@ var TableRow = function (_Component) {
           null,
           __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
             'form',
-            { onSubmit: this.handleSubmit },
+            { onSubmit: this.handleSubmit, className: 'form-inline' },
             __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
               __WEBPACK_IMPORTED_MODULE_1_react_router__["a" /* Link */],
-              { to: "edit/" + this.props.obj.id, className: 'btn btn-primary' },
-              'Edit'
+              { to: "edit/" + this.props.obj.id, className: 'btn btn-primary mr-2' },
+              'Actualizar'
             ),
-            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('input', { type: 'submit', value: 'Delete', className: 'btn btn-danger' })
+            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('input', { type: 'submit', value: 'Eliminar', className: 'btn btn-danger' })
           )
         )
       );
@@ -61481,7 +61483,7 @@ var TableRow = function (_Component) {
   return TableRow;
 }(__WEBPACK_IMPORTED_MODULE_0_react__["Component"]);
 
-/* unused harmony default export */ var _unused_webpack_default_export = (TableRow);
+/* harmony default export */ __webpack_exports__["a"] = (TableRow);
 
 /***/ }),
 /* 121 */
@@ -61515,9 +61517,10 @@ var UpdateAd = function (_Component) {
 
     var _this = _possibleConstructorReturn(this, (UpdateAd.__proto__ || Object.getPrototypeOf(UpdateAd)).call(this, props));
 
-    _this.state = { title: '', subtitle: '' };
+    _this.state = { title: '', subtitle: '', description: '' };
     _this.handleChange1 = _this.handleChange1.bind(_this);
     _this.handleChange2 = _this.handleChange2.bind(_this);
+    _this.handleChange3 = _this.handleChange3.bind(_this);
     _this.handleSubmit = _this.handleSubmit.bind(_this);
     return _this;
   }
@@ -61548,6 +61551,13 @@ var UpdateAd = function (_Component) {
       });
     }
   }, {
+    key: 'handleChange3',
+    value: function handleChange3(e) {
+      this.setState({
+        description: e.target.value
+      });
+    }
+  }, {
     key: 'handleSubmit',
     value: function handleSubmit(event) {
       var _this3 = this;
@@ -61555,7 +61565,8 @@ var UpdateAd = function (_Component) {
       event.preventDefault();
       var ads = {
         title: this.state.title,
-        subtitle: this.state.subtitle
+        subtitle: this.state.subtitle,
+        description: this.state.description
       };
       var uri = __WEBPACK_IMPORTED_MODULE_3__MyGlobleSetting__["a" /* default */].url + '/api/ads/' + this.props.params.id;
       __WEBPACK_IMPORTED_MODULE_1_axios___default.a.patch(uri, ads).then(function (response) {
@@ -61569,13 +61580,13 @@ var UpdateAd = function (_Component) {
         'div',
         null,
         __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-          'h1',
+          'h3',
           null,
-          'Update Ad'
+          'Actualizar anuncio'
         ),
         __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
           'div',
-          { className: 'row' },
+          { className: 'row form-group' },
           __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('div', { className: 'col-md-10' }),
           __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
             'div',
@@ -61583,7 +61594,7 @@ var UpdateAd = function (_Component) {
             __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
               __WEBPACK_IMPORTED_MODULE_2_react_router__["a" /* Link */],
               { to: '/display-item', className: 'btn btn-success' },
-              'Return to Ad'
+              'Volver al anuncio'
             )
           )
         ),
@@ -61592,35 +61603,58 @@ var UpdateAd = function (_Component) {
           { onSubmit: this.handleSubmit },
           __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
             'div',
-            { className: 'form-group' },
+            { className: 'form-group row' },
             __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
               'label',
-              null,
-              'Ad Title'
+              { className: 'col-sm-2 col-form-label' },
+              'Titulo'
             ),
-            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('input', { type: 'text',
-              className: 'form-control',
-              value: this.state.title,
-              onChange: this.handleChange1 })
+            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+              'div',
+              { className: 'col-sm-10' },
+              __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('input', { type: 'text', className: 'form-control', value: this.state.title, onChange: this.handleChange1 })
+            )
+          ),
+          __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+            'div',
+            { className: 'form-group row' },
+            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+              'label',
+              { className: 'col-sm-2 col-form-label' },
+              'Subtitulo'
+            ),
+            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+              'div',
+              { className: 'col-sm-10' },
+              __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('input', { type: 'text', className: 'form-control', value: this.state.subtitle, onChange: this.handleChange2 })
+            )
+          ),
+          __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+            'div',
+            { className: 'form-group row' },
+            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+              'label',
+              { className: 'col-sm-2 col-form-label' },
+              'Descripcion'
+            ),
+            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+              'div',
+              { className: 'col-sm-10' },
+              __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('textarea', { className: 'form-control',
+                onChange: this.handleChange3, value: this.state.description })
+            )
           ),
           __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
             'div',
             { className: 'form-group' },
             __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-              'label',
-              { name: 'product_subtitle' },
-              'Ad Subtitle'
-            ),
-            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('textarea', { className: 'form-control',
-              onChange: this.handleChange2, value: this.state.subtitle })
-          ),
-          __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-            'div',
-            { className: 'form-group' },
-            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-              'button',
-              { className: 'btn btn-primary' },
-              'Update'
+              'div',
+              { className: 'col-sm-2 offset-sm-5' },
+              __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                'button',
+                { className: 'btn btn-primary' },
+                'Actualizar'
+              )
             )
           )
         )

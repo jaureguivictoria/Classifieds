@@ -19,10 +19,9 @@ class DisplayAd extends Component {
      }
      tabRow(){
        if(this.state.ads instanceof Array){
-         return this.state.ads.map(function(object, i){
-             return ;
-
-         })
+           return this.state.ads.map(function(object, i){
+               return <TableRow obj={object} key={i} />;
+           })
        }
      }
 
@@ -30,24 +29,15 @@ class DisplayAd extends Component {
   render(){
     return (
       <div>
-        <h1>Ads</h1>
-
-
-        <div className="row">
-          <div className="col-md-10"></div>
-          <div className="col-md-2">
-            <Link to="/add-item">Create Ad</Link>
-          </div>
-        </div><br />
-
+        <h3>Anuncios</h3>
 
         <table className="table table-hover">
             <thead>
             <tr>
                 <td>ID</td>
-                <td>Ad Title</td>
-                <td>Ad Subtitle</td>
-                <td width="200px">Actions</td>
+                <td>Titulo</td>
+                <td>Subtitulo</td>
+                <td width="200px">Acciones</td>
             </tr>
             </thead>
             <tbody>

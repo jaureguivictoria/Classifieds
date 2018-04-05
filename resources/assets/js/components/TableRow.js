@@ -27,9 +27,9 @@ class TableRow extends Component {
             {this.props.obj.subtitle}
           </td>
           <td>
-          <form onSubmit={this.handleSubmit}>
-            <Link to={"edit/"+this.props.obj.id} className="btn btn-primary">Edit</Link>
-           <input type="submit" value="Delete" className="btn btn-danger"/>
+          <form onSubmit={this.handleSubmit} className="form-inline">
+            <Link to={"edit/"+this.props.obj.id} className="btn btn-primary mr-2">Actualizar</Link>
+           <input type="submit" value="Eliminar" className="btn btn-danger"/>
          </form>
           </td>
         </tr>

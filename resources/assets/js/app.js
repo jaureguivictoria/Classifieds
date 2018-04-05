@@ -17,7 +17,6 @@ import CreateAd from './components/CreateAd';
 import DisplayAd from './components/DisplayAd';
 import UpdateAd from './components/UpdateAd';
 
-
 render(
   <Router history={browserHistory}>
       <Route path="/" component={Master} >

@@ -1,4 +1,4 @@
-<title>{{trans('messages.welcome')}}</title>
+<title>Clasificados</title>
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -11,8 +11,9 @@
     ]); ?>
 </script>
 
-<!-- Scripts -->
+<!-- Scripts -->    
 <script defer src="{{ mix('/js/app.js') }}"></script>
+<script defer src="{{ asset('/js/home.js') }}"></script>
 
 <!-- Styles -->
 <link rel="stylesheet" href="{{ mix('/css/app.css') }}">

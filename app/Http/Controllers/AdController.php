@@ -4,9 +4,16 @@ namespace Classifieds\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Classifieds\Ad;
+use Classifieds\Repositories\AdRepository;
 
 class AdController extends Controller
 {
+    public $adRepository;
+    
+    public function __construct(AdRepository $adRepository)
+    {
+        $this->adRepository = $adRepository;
+    }
     /**
      * Display a listing of the resource.
      *
@@ -14,7 +21,7 @@ class AdController extends Controller
      */
     public function index()
     {
-        $ads = Ad::all();
+        $ads = $this->adRepository->all();
         return response()->json($ads);
     }
 
@@ -28,7 +35,9 @@ class AdController extends Controller
     {
         $ad = new Ad([
           'title' => $request->get('title'),
-          'subtitle' => $request->get('subtitle')
+          'subtitle' => $request->get('subtitle'),
+          'description' => $request->get('description'),
+          'expired_at' => Carbon::now()->$dt->addMonth()
         ]);
         $ad->save();
 
@@ -90,5 +99,11 @@ class AdController extends Controller
         $ad->delete();
 
         return response()->json('Ad Deleted Successfully.');
+    }
+    
+    public function home(Request $request)
+    {
+        $ads = $this->adRepository->all();
+        return view('home')->with('ads', $ads);
     }
 }
