@@ -5,6 +5,7 @@ namespace Classifieds\Http\Controllers;
 use Illuminate\Http\Request;
 use Classifieds\Ad;
 use Classifieds\Repositories\AdRepository;
+use Carbon\Carbon;
 
 class AdController extends Controller
 {
@@ -37,7 +38,7 @@ class AdController extends Controller
           'title' => $request->get('title'),
           'subtitle' => $request->get('subtitle'),
           'description' => $request->get('description'),
-          'expired_at' => Carbon::now()->$dt->addMonth()
+          'expired_at' => Carbon::now()->addMonth()
         ]);
         $ad->save();
 
