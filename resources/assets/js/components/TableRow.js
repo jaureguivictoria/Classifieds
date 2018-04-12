@@ -11,8 +11,9 @@ class TableRow extends Component {
   handleSubmit(event) {
     event.preventDefault();
     let uri = MyGlobleSetting.url + `/api/ads/${this.props.obj.id}`;
-    axios.delete(uri);
-      browserHistory.push('/display-item');
+    axios.delete(uri).then((response) => {
+      browserHistory.push('/');
+    });
   }
   render() {
     return (

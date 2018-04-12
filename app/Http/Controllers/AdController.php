@@ -96,7 +96,7 @@ class AdController extends Controller
      */
     public function destroy($id)
     {
-        $ad = Ad::find($id);
+        $ad = Ad::where('id',$id)->withTrashed();
         $ad->delete();
 
         return response()->json('Ad Deleted Successfully.');
