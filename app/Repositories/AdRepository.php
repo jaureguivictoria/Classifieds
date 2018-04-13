@@ -7,10 +7,11 @@ use Carbon\Carbon;
 
 class AdRepository
 {
-    
-    public function all()
+    public function live()
     {
         $now = Carbon::now()->toDateTimeString();
-        return Ad::where('expired_at','>', $now)->get();
+        return Ad::where('expired_at','>', $now)
+                ->where('status','LIVE')
+                ->get();
     }
 }

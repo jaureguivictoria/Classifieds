@@ -1,24 +1,31 @@
 import React, {Component} from 'react';
 import axios from 'axios';
-import { Link } from 'react-router';
+import { Link,browserHistory } from 'react-router';
 import MyGlobleSetting from './MyGlobleSetting';
 
 
 class UpdateAd extends Component {
   constructor(props) {
       super(props);
-      this.state = {title: '', subtitle: '',description: ''};
+      this.state = {title: '', subtitle: '',description: '', status:''};
       this.handleChange1 = this.handleChange1.bind(this);
       this.handleChange2 = this.handleChange2.bind(this);
       this.handleChange3 = this.handleChange3.bind(this);
       this.handleSubmit = this.handleSubmit.bind(this);
+      this.activate = this.activate.bind(this);
+      this.deactivate = this.deactivate.bind(this);
   }
 
 
   componentDidMount(){
     axios.get(MyGlobleSetting.url + `/api/ads/${this.props.params.id}/edit`)
     .then(response => {
-      this.setState({ title: response.data.title, subtitle: response.data.subtitle });
+      this.setState({ 
+          title: response.data.title,
+          subtitle: response.data.subtitle,
+          description: response.data.description,
+          status: response.data.status
+      });
     })
     .catch(function (error) {
       console.log(error);
@@ -50,15 +57,49 @@ class UpdateAd extends Component {
     }
     let uri = MyGlobleSetting.url + '/api/ads/'+this.props.params.id;
     axios.patch(uri, ads).then((response) => {
-          this.props.history.push('/display-item');
+          browserHistory.push('/display-item');
     });
   }
+  
+  activate(event) {
+    event.preventDefault();
+    const ads = {
+      id: this.state.id
+    }
+    let uri = MyGlobleSetting.url + '/api/ads/'+this.props.params.id+'/activate';
+    axios.patch(uri, ads).then((response) => {
+          browserHistory.push('/display-item');
+    });
+  }
+  
+  deactivate(event) {
+    event.preventDefault();
+    const ads = {
+      id: this.state.id
+    }
+    let uri = MyGlobleSetting.url + '/api/ads/'+this.props.params.id+'/deactivate';
+    axios.patch(uri, ads).then((response) => {
+          browserHistory.push('/display-item');
+    });
+  }
+  
   render(){
     return (
       <div>
-        <h3>Actualizar anuncio</h3>
+        <h3>Actualizar anuncio {this.state.status}</h3>
         <div className="row form-group">
-          <div className="col-md-10"></div>
+          <div className="col-md-8"></div>
+          <div className="col-md-2">
+              {this.state.status == 'Pendiente' || this.state.status == 'Vencido'? (
+                <form onSubmit={this.activate}>
+                    <button className="btn btn-primary">Activar</button>
+                </form>
+          ) : ( 
+              <form onSubmit={this.deactivate}>
+                  <button className="btn btn-danger">Desactivar</button>
+              </form>
+          ) }
+          </div>
           <div className="col-md-2">
             <Link to="/display-item" className="btn btn-success">Volver al anuncio</Link>
           </div>

@@ -61376,7 +61376,7 @@ var DisplayAd = function (_Component) {
               __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
                 'td',
                 null,
-                'Subtitulo'
+                'Estado'
               ),
               __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
                 'td',
@@ -61461,7 +61461,7 @@ var TableRow = function (_Component) {
         __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
           'td',
           null,
-          this.props.obj.subtitle
+          this.props.obj.status
         ),
         __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
           'td',
@@ -61471,7 +61471,7 @@ var TableRow = function (_Component) {
             { onSubmit: this.handleSubmit, className: 'form-inline' },
             __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
               __WEBPACK_IMPORTED_MODULE_1_react_router__["a" /* Link */],
-              { to: "edit/" + this.props.obj.id, className: 'btn btn-primary mr-2' },
+              { to: "edit/" + this.props.obj.id, className: 'btn btn-primary mr-1' },
               'Actualizar'
             ),
             __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('input', { type: 'submit', value: 'Eliminar', className: 'btn btn-danger' })
@@ -61518,11 +61518,13 @@ var UpdateAd = function (_Component) {
 
     var _this = _possibleConstructorReturn(this, (UpdateAd.__proto__ || Object.getPrototypeOf(UpdateAd)).call(this, props));
 
-    _this.state = { title: '', subtitle: '', description: '' };
+    _this.state = { title: '', subtitle: '', description: '', status: '' };
     _this.handleChange1 = _this.handleChange1.bind(_this);
     _this.handleChange2 = _this.handleChange2.bind(_this);
     _this.handleChange3 = _this.handleChange3.bind(_this);
     _this.handleSubmit = _this.handleSubmit.bind(_this);
+    _this.activate = _this.activate.bind(_this);
+    _this.deactivate = _this.deactivate.bind(_this);
     return _this;
   }
 
@@ -61532,7 +61534,12 @@ var UpdateAd = function (_Component) {
       var _this2 = this;
 
       __WEBPACK_IMPORTED_MODULE_1_axios___default.a.get(__WEBPACK_IMPORTED_MODULE_3__MyGlobleSetting__["a" /* default */].url + ('/api/ads/' + this.props.params.id + '/edit')).then(function (response) {
-        _this2.setState({ title: response.data.title, subtitle: response.data.subtitle });
+        _this2.setState({
+          title: response.data.title,
+          subtitle: response.data.subtitle,
+          description: response.data.description,
+          status: response.data.status
+        });
       }).catch(function (error) {
         console.log(error);
       });
@@ -61561,8 +61568,6 @@ var UpdateAd = function (_Component) {
   }, {
     key: 'handleSubmit',
     value: function handleSubmit(event) {
-      var _this3 = this;
-
       event.preventDefault();
       var ads = {
         title: this.state.title,
@@ -61571,7 +61576,31 @@ var UpdateAd = function (_Component) {
       };
       var uri = __WEBPACK_IMPORTED_MODULE_3__MyGlobleSetting__["a" /* default */].url + '/api/ads/' + this.props.params.id;
       __WEBPACK_IMPORTED_MODULE_1_axios___default.a.patch(uri, ads).then(function (response) {
-        _this3.props.history.push('/display-item');
+        __WEBPACK_IMPORTED_MODULE_2_react_router__["d" /* browserHistory */].push('/display-item');
+      });
+    }
+  }, {
+    key: 'activate',
+    value: function activate(event) {
+      event.preventDefault();
+      var ads = {
+        id: this.state.id
+      };
+      var uri = __WEBPACK_IMPORTED_MODULE_3__MyGlobleSetting__["a" /* default */].url + '/api/ads/' + this.props.params.id + '/activate';
+      __WEBPACK_IMPORTED_MODULE_1_axios___default.a.patch(uri, ads).then(function (response) {
+        __WEBPACK_IMPORTED_MODULE_2_react_router__["d" /* browserHistory */].push('/display-item');
+      });
+    }
+  }, {
+    key: 'deactivate',
+    value: function deactivate(event) {
+      event.preventDefault();
+      var ads = {
+        id: this.state.id
+      };
+      var uri = __WEBPACK_IMPORTED_MODULE_3__MyGlobleSetting__["a" /* default */].url + '/api/ads/' + this.props.params.id + '/deactivate';
+      __WEBPACK_IMPORTED_MODULE_1_axios___default.a.patch(uri, ads).then(function (response) {
+        __WEBPACK_IMPORTED_MODULE_2_react_router__["d" /* browserHistory */].push('/display-item');
       });
     }
   }, {
@@ -61583,12 +61612,34 @@ var UpdateAd = function (_Component) {
         __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
           'h3',
           null,
-          'Actualizar anuncio'
+          'Actualizar anuncio ',
+          this.state.status
         ),
         __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
           'div',
           { className: 'row form-group' },
-          __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('div', { className: 'col-md-10' }),
+          __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('div', { className: 'col-md-8' }),
+          __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+            'div',
+            { className: 'col-md-2' },
+            this.state.status == 'Pendiente' || this.state.status == 'Vencido' ? __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+              'form',
+              { onSubmit: this.activate },
+              __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                'button',
+                { className: 'btn btn-primary' },
+                'Activar'
+              )
+            ) : __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+              'form',
+              { onSubmit: this.deactivate },
+              __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                'button',
+                { className: 'btn btn-danger' },
+                'Desactivar'
+              )
+            )
+          ),
           __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
             'div',
             { className: 'col-md-2' },

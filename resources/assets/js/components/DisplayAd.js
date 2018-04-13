@@ -36,7 +36,7 @@ class DisplayAd extends Component {
             <tr>
                 <td>ID</td>
                 <td>Titulo</td>
-                <td>Subtitulo</td>
+                <td>Estado</td>
                 <td width="200px">Acciones</td>
             </tr>
             </thead>

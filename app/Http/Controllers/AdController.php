@@ -22,7 +22,7 @@ class AdController extends Controller
      */
     public function index()
     {
-        $ads = $this->adRepository->all();
+        $ads = Ad::all();
         return response()->json($ads);
     }
 
@@ -104,7 +104,26 @@ class AdController extends Controller
     
     public function home(Request $request)
     {
-        $ads = $this->adRepository->all();
+        $ads = $this->adRepository->live();
         return view('home')->with('ads', $ads);
+    }
+    
+    public function activate($id)
+    {
+        $ad = Ad::where('id',$id)->withTrashed()->first();
+        $ad->status = Ad::STATUS_LIVE;
+        $ad->expired_at = Carbon::now()->addDays(30);
+        $ad->save();
+
+        return response()->json('Ad is now live.');
+    }
+    
+    public function deactivate($id)
+    {
+        $ad = Ad::where('id',$id)->withTrashed()->first();
+        $ad->status = Ad::STATUS_PENDING;
+        $ad->save();
+
+        return response()->json('Ad set to pending status successfully.');
     }
 }

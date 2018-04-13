@@ -25,11 +25,11 @@ class TableRow extends Component {
             {this.props.obj.title}
           </td>
           <td>
-            {this.props.obj.subtitle}
+            {this.props.obj.status}
           </td>
           <td>
           <form onSubmit={this.handleSubmit} className="form-inline">
-            <Link to={"edit/"+this.props.obj.id} className="btn btn-primary mr-2">Actualizar</Link>
+            <Link to={"edit/"+this.props.obj.id} className="btn btn-primary mr-1">Actualizar</Link>
            <input type="submit" value="Eliminar" className="btn btn-danger"/>
          </form>
           </td>

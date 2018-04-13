@@ -18,3 +18,6 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 });
 
 Route::resource('ads', 'AdController');
+
+Route::patch('ads/{id}/activate', 'AdController@activate');
+Route::patch('ads/{id}/deactivate', 'AdController@deactivate');
